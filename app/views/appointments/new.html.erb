@@ -1,1 +1,8 @@
 <h2>New Appointment</h2>
+
+<%= form_for @appointment do |f| %>
+  <div><label>Title: <%= f.text_field :title %></label></div>
+  <div><label>When: <%= f.text_field :when %></label></div>
+  <div><label>Status: <%= f.select :status, Appointment.statuses.keys %></label></div>
+  <div><%= f.submit %> <%= link_to 'Cancel', appointments_path %></div>
+<% end %>
