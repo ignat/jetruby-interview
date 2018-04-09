@@ -12,7 +12,7 @@ class Api::AppointmentsController < ActionController::API
     # TODO: authorize and find user
     @user = User.find(1)
     @appointment = Appointment.create(params.permit(:title, :when).merge(user_id: @user.id, status: :pending))
-    render json: @appointment, status: :ok
+    render json: @appointment, status: :created
   end
 
 end
