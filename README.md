@@ -16,8 +16,14 @@
 
 * Create the database: `rails db:setup`
 
-### Scheduler
+### Scheduler:
 
 * Whenever gem is used to generate and install crontab file
 
 * Install with `whenever --update-crontab`
+
+### API:
+
+* `GET /api/appointments` - return a list of appointments for the authenticated user
+
+* `POST /api/appointments` - create an appointment with an optional reminder
