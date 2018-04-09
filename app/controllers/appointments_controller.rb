@@ -3,7 +3,7 @@ class AppointmentsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @appointments = current_user.appointments
+    @appointments = current_user.appointments.includes(:reminders)
   end
 
   def new

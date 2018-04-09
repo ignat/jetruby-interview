@@ -2,7 +2,13 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :appointments
+  resources :appointments do
+    resources :reminders
+  end
+
+  namespace :api do
+    resources :appointments, only: [:index, :create]
+  end
 
   get 'home/index'
   root to: 'home#index'
