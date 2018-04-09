@@ -15,3 +15,9 @@
 * Add rails role to `postgresql` db: `create role rails with createdb login password 'rails';`
 
 * Create the database: `rails db:setup`
+
+### Scheduler
+
+* Whenever gem is used to generate and install crontab file
+
+* Install with `whenever --update-crontab`
