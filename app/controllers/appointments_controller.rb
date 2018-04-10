@@ -19,8 +19,13 @@ class AppointmentsController < ApplicationController
 
   def create
     @appointment = Appointment.create(params.require(:appointment).permit(:title, :when, :status).merge(user_id: current_user.id))
-    flash[:notice] = "Successfully created a new appointment"
-    redirect_to appointments_url
+    if @appointment.valid?
+      flash[:notice] = "Successfully created a new appointment"
+      redirect_to appointments_url
+    else
+      flash[:error] = "Failure! Title or time should not be blank"
+      render :new
+    end
   end
 
   def edit
@@ -30,8 +35,13 @@ class AppointmentsController < ApplicationController
   def update
     @appointment = Appointment.where(id: params[:id], user_id: current_user.id).first
     @appointment.update(params.require(:appointment).permit(:title, :when, :status))
-    flash[:notice] = "Successfully updated the appointment"
-    redirect_to appointments_url
+    if @appointment.valid?
+      flash[:notice] = "Successfully updated the appointment"
+      redirect_to appointments_url
+    else
+      flash[:error] = "Failure! Title or time should not be blank"
+      render :edit
+    end
   end
 
   def destroy
