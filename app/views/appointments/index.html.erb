@@ -3,7 +3,8 @@
 <p>
 <%= link_to 'Upcoming', appointments_path() %> |
 <%= link_to 'Past', appointments_path(filter: :past) %> |
-<%= link_to 'Pending', appointments_path(filter: :pending) %>
+<%= link_to 'Pending', appointments_path(filter: :pending) %> |
+<%= link_to 'New Appointment', new_appointment_path %>
 </p>
 
 <ul>
@@ -25,4 +26,3 @@
     </li>
   <% end %>
 </ul>
-<p><%= link_to 'New Appointment', new_appointment_path %></p>
