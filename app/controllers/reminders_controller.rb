@@ -11,8 +11,11 @@ class RemindersController < ApplicationController
     @appointment = Appointment.where(id: params[:appointment_id], user_id: current_user.id).first
     @reminder = Reminder.new(params.require(:reminder).permit(:when))
     @reminder.appointment = @appointment
-    @reminder.save
-    flash[:notice] = "Successfully added a new reminder"
+    if @reminder.save
+      flash[:notice] = "Successfully added a new reminder"
+    else
+      flash[:error] = "Failure! Such reminder already exists"
+    end
     redirect_to appointments_url
   end
 

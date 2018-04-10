@@ -4,4 +4,6 @@ class Reminder < ApplicationRecord
 
   enum status: [:awaiting, :sent]
 
+  validates_uniqueness_of :when, scope: :appointment_id
+
 end
