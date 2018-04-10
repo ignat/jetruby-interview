@@ -1,4 +1,11 @@
 <h2>Appointments</h2>
+
+<p>
+<%= link_to 'Upcoming', appointments_path() %> |
+<%= link_to 'Past', appointments_path(filter: :past) %> |
+<%= link_to 'Pending', appointments_path(filter: :pending) %>
+</p>
+
 <ul>
   <% @appointments.each do |a| %>
     <li>

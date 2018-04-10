@@ -3,7 +3,14 @@ class AppointmentsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @appointments = current_user.appointments.includes(:reminders)
+    case params[:filter]
+    when 'pending'
+      @appointments = current_user.appointments.pending.includes(:reminders).order(:when)
+    when 'past'
+      @appointments = current_user.appointments.where('"when" < now()').includes(:reminders).order(:when)
+    else
+      @appointments = current_user.appointments.where('"when" > now()').includes(:reminders).order(:when)
+    end
   end
 
   def new
