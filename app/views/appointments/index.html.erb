@@ -10,7 +10,7 @@
 <ul>
   <% @appointments.each do |a| %>
     <li>
-    <b><%= a.title %></b> on <%= a.when.strftime('%b %d, %Y') %> at <%= a.when.strftime('%R') %>
+    <b><%= a.title %></b> on <%= a.starts_at.strftime('%b %d, %Y at %R') %>
     [
     <%= link_to 'Edit', edit_appointment_path(a) %>,
     <%= link_to 'Delete', appointment_path(a), method: :delete, confirm: "Are you sure?" %>,
@@ -19,7 +19,7 @@
     <% if a.reminders.any? %>
       <ul>
         <% a.reminders.each do |r| %>
-          <li>Remind <%= r.when %> minutes before [<%= link_to 'Delete', appointment_reminder_path(a, r), method: :delete, confirm: "Are you sure?" %>]</li>
+          <li>Remind <%= r.minutes_before_appointment %> minutes before [<%= link_to 'Delete', appointment_reminder_path(a, r), method: :delete, confirm: "Are you sure?" %>]</li>
         <% end %>
       </ul>
     <% end %>

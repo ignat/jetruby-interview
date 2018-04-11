@@ -2,7 +2,7 @@
 
 <%= form_for [@appointment, @reminder] do |f| %>
 
-  <div><label>When (in minutes before appointment) <%= f.text_field :when %></label></div>
+  <div><label>When (in minutes before appointment) <%= f.text_field :minutes_before_appointment %></label></div>
   <div><%= f.submit %></div>
 
 <% end %>

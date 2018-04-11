@@ -6,6 +6,6 @@ class Appointment < ApplicationRecord
   enum status: [:pending, :confirmed, :canceled]
 
   validates_presence_of :title
-  validates_presence_of :when
+  validates_presence_of :starts_at
 
 end

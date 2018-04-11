@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180411085425) do
+ActiveRecord::Schema.define(version: 20180411101453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20180411085425) do
     t.integer "user_id", null: false
     t.string "title", null: false
     t.integer "status", default: 0, null: false
-    t.datetime "when", null: false
+    t.datetime "starts_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_appointments_on_user_id"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20180411085425) do
 
   create_table "reminders", force: :cascade do |t|
     t.integer "appointment_id", null: false
-    t.integer "when", default: 10, null: false
+    t.integer "minutes_before_appointment", default: 10, null: false
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

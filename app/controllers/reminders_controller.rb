@@ -9,7 +9,7 @@ class RemindersController < ApplicationController
 
   def create
     @appointment = Appointment.where(id: params[:appointment_id], user_id: current_user.id).first
-    @reminder = Reminder.new(params.require(:reminder).permit(:when))
+    @reminder = Reminder.new(params.require(:reminder).permit(:minutes_before_appointment))
     @reminder.appointment = @appointment
     if @reminder.save
       flash[:notice] = "Successfully added a new reminder"
