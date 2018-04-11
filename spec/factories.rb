@@ -12,8 +12,9 @@ FactoryBot.define do
   factory :appointment do
     user
     sequence(:title) { |n| "Title #{n}" }
+    starts_at { 2.hours.since }
     factory :upcoming_appointment do
-      starts_at { 3.hours.since }
+      starts_at { 4.hours.since }
       status :confirmed
     end
     factory :past_appointment do
