@@ -10,7 +10,8 @@ Rails.application.routes.draw do
     resources :appointments, only: [:index, :create]
   end
 
-  get 'home/index'
+  get 'home', to: 'home#index', as: :home
+  get 'profile', to: 'home#profile', as: :profile
   root to: 'home#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

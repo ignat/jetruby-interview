@@ -1,0 +1,15 @@
+<h2>Profile</h2>
+
+<dl>
+  <dt>Email:</dt><dd><%= @user.email %></dd>
+  <% if @user.last_sign_in_at.present? %>
+    <dt>Last Login:</dt><dd><%= @user.last_sign_in_at.strftime("%b %d at %R") %></dd>
+  <% end %>
+  <% if @user.last_sign_in_ip.present? %>
+    <dt>Last IP:</dt><dd><%= @user.last_sign_in_ip %></dd>
+  <% end %>
+  <dt>Current Login:</dt><dd><%= @user.current_sign_in_at.strftime("%b %d at %R") %></dd>
+  <dt>Current IP:</dt><dd><%= @user.current_sign_in_ip %></dd>
+  <dt>Number of Logins:</dt><dd><%= @user.sign_in_count %></dd>
+  <dt>API Key:</dt><dd><%= @user.api_key %></dd>
+</dl>
