@@ -24,6 +24,10 @@
 
 ### API:
 
+* The API key for an authenticated user can be requested at /profile page
+
+* Send API key in Authorization header
+
 * `GET /api/appointments` - return a list of appointments for the authenticated user
 
 * `POST /api/appointments` - create an appointment with an optional reminder
