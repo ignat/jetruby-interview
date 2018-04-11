@@ -19,10 +19,14 @@ class Api::AppointmentsController < ActionController::API
     @user = User.find_by_api_key(api_key)
     return head :unauthorized if @user.nil?
     @appointment = Appointment.create(params.permit(:title, :starts_at).merge(user_id: @user.id, status: :pending))
-    if params[:reminder].present?
-      @appointment.reminders.create(minutes_before_appointment: params[:reminder])
+    if @appointment.valid?
+      if params[:reminder].present?
+        @appointment.reminders.create(minutes_before_appointment: params[:reminder])
+      end
+      render json: @appointment, status: :created
+    else
+      render json: @appointment.errors, status: :bad_request
     end
-    render json: @appointment, status: :created
   end
 
 end
